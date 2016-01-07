@@ -1,9 +1,9 @@
 Play : la TODO list
 =================================
 
-Nous allons réaliser aujourd'hui une simple `TODO list` en utilisant diverses APIs misent à disposition par Play ainsi qu'une bonne dose de Javascript. L'application à réaliser ressemblera à [quelque chose comme ça](http://ancelin.org/example/). Cette application exposera des services REST qui seront consommés par une IHM en Javascript.
+Nous allons réaliser aujourd'hui une simple `TODO list` en utilisant diverses APIs misent à disposition par Play ainsi qu'une bonne dose de Javascript. L'application à réaliser ressemblera à [quelque chose comme ça](../todo-template.html). Cette application exposera des services REST qui seront consommés par une IHM en Javascript.
 
-Commencez par télécharger le squelette du TP [ici](https://raw.githubusercontent.com/mathieuancelin/poitiers-2015/master/todo-play1-starter.zip). 
+Commencez par télécharger le squelette du TP [ici](../todo-play1-starter.zip).
 Le projet contient déjà le minimum vital pour avoir une application qui fonctionne. De plus le projet contient une IHM de démo pour tester vos services ainsi qu'un outil de diagnostic pour vérifier que votre implémentation tient la route.
 
 I. Partie Serveur
@@ -30,13 +30,13 @@ Maintenant, il faut créer les services REST correspondant dans la class Applica
 
 Cette classe doit répondre au contrat suivant :
 
-* GET    /api/tasks        => récupération de toutes les instances de tâches
-* POST   /api/tasks        => création une nouvelle tâche 
-* PUT    /api/tasks/{id}   => mise à jour d'une tâche
-* DELETE /api/tasks        => suppression de toutes les tâches
-* DELETE /api/tasks/done   => suppression des tâches finies
-* GET    /api/tasks/{id}   => récupération d'une tâche
-* DELETE /api/tasks/{id}   => suppression d'une tâche en particulier
+* `GET    /api/tasks     `   => récupération de toutes les instances de tâches
+* `POST   /api/tasks     `   => création une nouvelle tâche
+* `PUT    /api/tasks/{id}`   => mise à jour d'une tâche
+* `DELETE /api/tasks     `   => suppression de toutes les tâches
+* `DELETE /api/tasks/done`   => suppression des tâches finies
+* `GET    /api/tasks/{id}`   => récupération d'une tâche
+* `DELETE /api/tasks/{id}`   => suppression d'une tâche en particulier
 
 Voici un exemple de classe répondant à ce contrat
 
@@ -141,9 +141,9 @@ Nous pouvons maintenant passer à la partie client
 II. Partie Client
 ---------------------------
 
-Nous allons coder la partie client en Javascript en utilisant JQuery. Vous pouvez utiliser n'importe quel autre framework JS du moment que vous savez l'utiliser. Je vous conseille cependant de regarder du côté d'Angular et de React. 
+Nous allons coder la partie client en Javascript en utilisant JQuery. Vous pouvez utiliser n'importe quel autre framework JS du moment que vous savez l'utiliser. Je vous conseille cependant de regarder du côté d'Angular et de React.
 
-Vous devrez écrire votre code javascript dans `web/js/todo.js`. Commencez par effacer les lignes 
+Vous devrez écrire votre code javascript dans `web/js/todo.js`. Commencez par effacer les lignes
 
 ```javascript
 var el = ...;
@@ -295,7 +295,7 @@ et voici le template JS de départ (a mettre dans web/js/todo.js)
 ```javascript
 
 var todos = [];
-            
+
 $(document).ready(function() {
     $('#add').click(function(e) {
         e.preventDefault();

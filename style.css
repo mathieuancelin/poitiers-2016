@@ -1,0 +1,9 @@
+body {
+  font-family: Open Sans Condensed;
+  font-weight: normal;
+}
+
+a, a:link, a:visited, a:hover, a:active {
+  color: rgb(49, 94, 166);
+  text-decoration: none;
+}

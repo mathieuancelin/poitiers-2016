@@ -6,7 +6,7 @@ Nous allons réaliser aujourd'hui une simple `TODO list` en utilisant diverses t
 Commencez par télécharger le squelette du TP [ici](./todo-starter.zip). Si vous utilisez un poste de la fac, il faudra installer la dernière version de Netbeans + Glassfish.
 
 Le projet contient déjà le minimum vital pour avoir une application qui fonctionne. De plus le projet contient une IHM de démo pour tester vos service ainsi qu'un outil de diagnostique pour vérifier que votre implémentation tient la route.
-î
+
 I. Partie Serveur
 --------------------------
 
@@ -138,13 +138,13 @@ Maintenant, il faut créer les services REST correspondant. Vous pouvez créer u
 
 Cette classe doit répondre au contrat suivant :
 
-* GET    /Todo/api/tasks       => récupération toutes les instances de tâches
-* POST   /Todo/api/tasks       => création une nouvelle tâche
-* PUT    /Todo/api/tasks/:id   => mise à jour d'une tâche
-* DELETE /Todo/api/tasks       => supression de toutes les tâches
-* DELETE /Todo/api/tasks/done  => supression des tâches finies
-* GET    /Todo/api/tasks/:id   => récupération d'une tâche
-* DELETE /Todo/api/tasks/:id   => suppression d'une tâche en particulier
+* `GET    /Todo/api/tasks     `  => récupération toutes les instances de tâches
+* `POST   /Todo/api/tasks     `  => création une nouvelle tâche
+* `PUT    /Todo/api/tasks/:id `  => mise à jour d'une tâche
+* `DELETE /Todo/api/tasks     `  => supression de toutes les tâches
+* `DELETE /Todo/api/tasks/done`  => supression des tâches finies
+* `GET    /Todo/api/tasks/:id `  => récupération d'une tâche
+* `DELETE /Todo/api/tasks/:id `  => suppression d'une tâche en particulier
 
 Voici un exemple de classe répondant à ce contrat
 
@@ -452,14 +452,14 @@ Ici, l'application Frontend (qui contient l'IHM) se chargera de consommer divers
 
 Voici les services à implémenter côté frontend. Vous êtes libre d'implémenter les services backend comme vous voudrez. Cependant votre application frontend doit absolument communiquer avec les applications frontend grâce à des services REST (vous utiliserez le client HTTP fourni avec JAX-RS). La différence majeure de cette version est qu'il va devoir être nécessaire de gérer les utilisateurs qui créé des tâches. Pour celà il faudra créer un service de gestion d'utilisateurs et il faudra rajouter un id utilisateur dans chaque tâche. Il faudra également ajouter un sélecteur d'utilisateur dans l'IHM et afficher le nom de l'utilisateur qui à créer la tâche pour chaque tâche.
 
-* GET    /TodoFrontend/api/users       => récupération tous les utilisateurs du système
-* GET    /TodoFrontend/api/tasks       => récupération toutes les instances de tâches
-* POST   /TodoFrontend/api/tasks + param userId et name dans le body     => création une nouvelle tâche
-* PUT    /TodoFrontend/api/tasks/:id + param userId et param done dans le body => mise à jour d'une tâche
-* DELETE /TodoFrontend/api/tasks       => supression d'une tâche en particulier
-* DELETE /TodoFrontend/api/tasks/done  => supression des tâches finies
-* GET    /TodoFrontend/api/tasks/:id?userId=:userId   => récupération d'une tâche
-* DELETE /TodoFrontend/api/tasks/:id?userId=:userId   => suppression d'une tâche
+* `GET    /TodoFrontend/api/users`                      => récupération tous les utilisateurs du système
+* `GET    /TodoFrontend/api/tasks`                      => récupération toutes les instances de tâches
+* `POST   /TodoFrontend/api/tasks` + param userId et name dans le body     => création une nouvelle tâche
+* `PUT    /TodoFrontend/api/tasks/:id` + param userId et param done dans le body => mise à jour d'une tâche
+* `DELETE /TodoFrontend/api/tasks`                      => supression d'une tâche en particulier
+* `DELETE /TodoFrontend/api/tasks/done`                 => supression des tâches finies
+* `GET    /TodoFrontend/api/tasks/:id?userId=:userId`   => récupération d'une tâche
+* `DELETE /TodoFrontend/api/tasks/:id?userId=:userId`   => suppression d'une tâche
 
 Voici un exemple de service dans le Frontend
 
