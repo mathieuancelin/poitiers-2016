@@ -8,7 +8,7 @@
 
 ## FooBarQix
 
-Vous trouverez [http://mathieuancelin.github.io/poitiers-2016/foobarqix.html](ici le challenge FooBarQix
+Vous trouverez [ici](http://mathieuancelin.github.io/poitiers-2016/foobarqix.html) le challenge FooBarQix
 
 Voici une solution possible au problème en ES2015
 
