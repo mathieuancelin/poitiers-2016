@@ -10,7 +10,7 @@
 
 Vous trouverez [ici](http://mathieuancelin.github.io/poitiers-2016/foobarqix.html) le challenge FooBarQix
 
-Voici une solution possible au problème en ES5
+Voici une solution possible au problème en ES5 ([JSBin](https://jsbin.com/vacoticuge/edit?html,js,console,output))
 
 ```javascript
 for (var i = 1; i <= 100; i++) {
@@ -46,7 +46,7 @@ Array(100).fill().map((_, i) => i + 1).forEach(i => {
 
 ## TP
 
-Voici un [exemple](./todo-template.html) de l'application à créer 
+Voici un [exemple](./todo-template.html) de l'application à créer
 
 * [Enoncé pour Todo List en Java EE](./tp/todo-javaee7.html)
 * [Enoncé pour la Todo List avec Play Framework](./tp/todo-play1.html)
