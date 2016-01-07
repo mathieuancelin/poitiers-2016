@@ -12,7 +12,7 @@ for (let i = 1; i < 101; i++) {
   const printableResult = result.length === 0 ? i : result;
   const value = `${i} \u21D2 ${printableResult}`;
   console.log(value);
-  
+
   const li = document.createElement('li');
   const text = document.createTextNode(value);
   li.appendChild(text);
