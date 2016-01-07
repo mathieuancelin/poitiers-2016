@@ -1,12 +1,12 @@
 TP Java EE : la TODO list
 =================================
 
-Nous allons réaliser aujourd'hui une simple `TODO list` en utilisant diverses technologies Java EE : EJB, JAX-RS (client + server), JPA, CDI ainsi qu'une bonne dose de Javascript. L'application à réaliser ressemblera à [quelque chose comme ça](http://ancelin.org/example/). Cette application exposera des services REST qui seront consommés par une IHM en Javascript.
+Nous allons réaliser aujourd'hui une simple `TODO list` en utilisant diverses technologies Java EE : EJB, JAX-RS (client + server), JPA, CDI ainsi qu'une bonne dose de Javascript. L'application à réaliser ressemblera à [quelque chose comme ça](../todo-template.html). Cette application exposera des services REST qui seront consommés par une IHM en Javascript.
 
-Commencez par télécharger le squelette du TP [ici](https://raw.githubusercontent.com/mathieuancelin/poitiers-2015/master/todo-starter.zip). Si vous utilisez un poste de la fac, il faudra installer la dernière version de Netbeans + Glassfish.
+Commencez par télécharger le squelette du TP [ici](./todo-starter.zip). Si vous utilisez un poste de la fac, il faudra installer la dernière version de Netbeans + Glassfish.
 
 Le projet contient déjà le minimum vital pour avoir une application qui fonctionne. De plus le projet contient une IHM de démo pour tester vos service ainsi qu'un outil de diagnostique pour vérifier que votre implémentation tient la route.
-
+î
 I. Partie Serveur
 --------------------------
 
@@ -62,20 +62,20 @@ import javax.persistence.EntityManager;
 
 @Entity @XmlRootElement
 public class Task implements Serializable {
-    
+
     @Id @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
     private Boolean done;
     private String name;
-  
+
     getters, setters, etc ...
 
 ```
 
 Afin de coller à une conception orientée objet, nous allons éviter de créer des couches de services ou de DAO permettant l'accès au données et nous allons coder toutes les méthodes concernant la classe Task dans la classe Task.
-Une des particularité des beans JPA est qu'ils ne peuvent pas être injectés. Du coup il n'est pas possible de récupérer l'entity manager courant depuis un bean JPA. Nous allons donc utiliser une astuce pour le récupérer. 
+Une des particularité des beans JPA est qu'ils ne peuvent pas être injectés. Du coup il n'est pas possible de récupérer l'entity manager courant depuis un bean JPA. Nous allons donc utiliser une astuce pour le récupérer.
 
-Dans votre classe Task, ajouter la méthode suivante 
+Dans votre classe Task, ajouter la méthode suivante
 
 ```java
 private static EntityManager em() {
@@ -139,7 +139,7 @@ Maintenant, il faut créer les services REST correspondant. Vous pouvez créer u
 Cette classe doit répondre au contrat suivant :
 
 * GET    /Todo/api/tasks       => récupération toutes les instances de tâches
-* POST   /Todo/api/tasks       => création une nouvelle tâche 
+* POST   /Todo/api/tasks       => création une nouvelle tâche
 * PUT    /Todo/api/tasks/:id   => mise à jour d'une tâche
 * DELETE /Todo/api/tasks       => supression de toutes les tâches
 * DELETE /Todo/api/tasks/done  => supression des tâches finies
@@ -175,39 +175,39 @@ public class TodoServices {
     public List<Task> allTasks() {
         // TODO : à implémenter
     }
-    
+
     @Path("done") @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     public void deleteAllDone() {
         // TODO : à implémenter
     }
-    
+
     @Path("{id}") @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public Task changeTaskState(@PathParam("id") Long id, @FormParam("done") Boolean done) {
         // TODO : à implémenter
     }
-    
+
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public Task createTask(@FormParam("name") String name) {
         // TODO : à implémenter
     }
-    
+
     @Path("{id}") @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Task getTask(@PathParam("id") Long id) {
         // TODO : à implémenter
     }
-    
+
     @Path("{id}") @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     public void deleteTask(@PathParam("id") Long id) {
         // TODO : à implémenter
     }
-    
+
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     public void deleteAll() {
@@ -272,7 +272,7 @@ II. Partie Client
 
 Nous allons coder la partie client en Javascript en utiliser JQuery. Vous pouvez utiliser n'importe quel autre framework JS du moment que vous savez l'utiliser. Je vous conseille cependant de regarder du côté d'Angular et de React.
 
-Vous devrez écrire votre code javascript dans `web/js/todo.js`. Commencez par effacer les lignes 
+Vous devrez écrire votre code javascript dans `web/js/todo.js`. Commencez par effacer les lignes
 
 ```javascript
 var el = ...;
@@ -424,7 +424,7 @@ et voici le template JS de départ (a mettre dans web/js/todo.js)
 ```javascript
 
 var todos = [];
-            
+
 $(document).ready(function() {
     $('#add').click(function(e) {
         e.preventDefault();
@@ -444,7 +444,7 @@ $(document).ready(function() {
 III. Micro services
 -------------------------
 
-Pour cette partie, vous développerez la même application, à la différence que celle-ci sera séparée en trois morceaux. 
+Pour cette partie, vous développerez la même application, à la différence que celle-ci sera séparée en trois morceaux.
 
 Commencez par télécharger les squelettes de ces trois applications [ici](https://raw.githubusercontent.com/mathieuancelin/jpoitiers-2015/master/backuser-starter.zip), [ici](https://raw.githubusercontent.com/mathieuancelin/jpoitiers-2015/master/backtask-starter.zip) et [ici](https://raw.githubusercontent.com/mathieuancelin/jpoitiers-2015/master/front-starter.zip).
 
@@ -454,14 +454,14 @@ Voici les services à implémenter côté frontend. Vous êtes libre d'implémen
 
 * GET    /TodoFrontend/api/users       => récupération tous les utilisateurs du système
 * GET    /TodoFrontend/api/tasks       => récupération toutes les instances de tâches
-* POST   /TodoFrontend/api/tasks + param userId et name dans le body     => création une nouvelle tâche 
+* POST   /TodoFrontend/api/tasks + param userId et name dans le body     => création une nouvelle tâche
 * PUT    /TodoFrontend/api/tasks/:id + param userId et param done dans le body => mise à jour d'une tâche
 * DELETE /TodoFrontend/api/tasks       => supression d'une tâche en particulier
 * DELETE /TodoFrontend/api/tasks/done  => supression des tâches finies
 * GET    /TodoFrontend/api/tasks/:id?userId=:userId   => récupération d'une tâche
 * DELETE /TodoFrontend/api/tasks/:id?userId=:userId   => suppression d'une tâche
 
-Voici un exemple de service dans le Frontend 
+Voici un exemple de service dans le Frontend
 
 ```java
 @GET @Path("tasks")
