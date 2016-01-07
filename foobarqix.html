@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Foo Bar Qix kata</title>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet" type="text/css">
+    <style>
+      body {
+        background: #f9c300;
+        font-family: Open Sans Condensed;
+        font-weight: normal;
+        font-size: 1.4em;
+        color: black;
+        margin-left: 50px;
+        margin-right: 50px;
+      }
+      #foobarqix {
+        display: flex;
+
+      }
+      #rules {
+        width: 80%;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      #app {
+        width: 20%;
+        padding-left: 10px;
+        font-size: 1.6em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Foo Bar Qix</h1>
+    <div id="foobarqix">
+      <div id="rules">
+        <p>
+          Write a program that prints numbers from 1 to 100, one number per line.
+          For each printed number, use the following rules :
+        </p>
+
+        <ul>
+          <li>if the number is divisible by 3 or contains 3, replace 3 by "Foo"</li>
+          <li>if the number is divisible by 5 or contains 5, replace 5 by "Bar"</li>
+          <li>if the number is devisible by 7 or contains 7, replace 7 by "Qix"</li>
+        </ul>
+        <div style="display: flex; justify-content: space-between ">
+          <div style="width: 20%">
+            <p>Example:</p>
+            <ul>
+              <li>1</li>
+              <li>2</li>
+              <li>FooFoo</li>
+              <li>4</li>
+              <li>BarBar</li>
+              <li>Foo</li>
+              <li>QixQix</li>
+              <li>8</li>
+              <li>Foo</li>
+              <li>Bar</li>
+            </ul>
+          </div>
+          <div style="width: 80%">
+            <h3>mathieu.ancelin@serli.com</h3>
+            <ul>
+              <li>divisors have high precedence, ex: 51 -> FooBar</li>
+              <li>the content is analysed in the order they appear, ex: 53 -> BarFoo</li>
+              <li>13 contains 3 so we print "Foo"</li>
+              <li>15 is divisible by 3 and 5 and contains 5, so we print "FooBarBar"</li>
+              <li>33 contains 3 two times and is divisible by 3, so we print "FooFooFoo"</li>
+            </ul>
+          </div>
+      </div>
+      </div>
+      <div id="app"></div>
+    </div>
+    <script>
+      'use strict';
+      const chars = ['', '', '', 'Foo', '', 'Bar', '', 'Qix', '', ''];
+      const ul = document.createElement('ul');
+      for (let i = 1; i < 101; i++) {
+        let result = '';
+        if (i % 3 === 0) result += 'Foo';
+        if (i % 5 === 0) result += 'Bar';
+        if (i % 7 === 0) result += 'Qix';
+        result += [].map.call(`${i}`, c => chars[c]).join('');
+        const printableResult = result.length === 0 ? i : result;
+        const value = `${i} \u21D2 ${printableResult}`;
+        const li = document.createElement('li');
+        const text = document.createTextNode(value);
+        li.appendChild(text);
+        ul.appendChild(li);
+        console.log(value);
+      }
+      document.getElementById('app').appendChild(ul);
+    </script>
+  </body>
+</html>
